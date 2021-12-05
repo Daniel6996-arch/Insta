@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
 
 <div class="container">
-    <h3>Suggestions for you</h3>
+    <div>
+        <h5>Add a Post</h5>
+    </div>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+              </div> 
+        </form>
+
+    </div>
     <h1 class="border p-2"></h1>
     {% for image in image_list %}
     
     <h1>{{ image.image_name }}</h1>
     <img src="{{ image.image }}"> 
+    <p>{{ image.created_on }}</p>
 
     {% endfor %}
 </div>
