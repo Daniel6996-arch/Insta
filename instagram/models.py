@@ -11,6 +11,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length = 60)
     image_caption = models.TextField(blank = True)
     creator_profile = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    created_on = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField()
 
 class Comment(models.Model): 
