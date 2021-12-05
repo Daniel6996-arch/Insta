@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/access/Desktop/Django_IPs/week2_IP/Instagram_clone/virtual"
+set -gx VIRTUAL_ENV "/home/access/Desktop/Django/The-Moringa-Tribune/virtual"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
