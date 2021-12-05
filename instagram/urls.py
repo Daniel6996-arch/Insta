@@ -6,5 +6,6 @@ from .views import ImageListView
 
 urlpatterns=[
     url('',views.ImageListView.as_view(),name = 'image-list'),
+    
 ]
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Image
+from .models import Image, UserProfile
 from .forms import PostForm
 
 # Create your views here.
@@ -23,7 +23,7 @@ class ImageListView(View):
 
         if form.is_valid():
             new_post = form.save(commit = False)
-            new_post.creator_profile = request.user
+            new_post.author = request.user
             new_post.save()   
 
         context = {
@@ -31,4 +31,19 @@ class ImageListView(View):
             'form':form,
         }
 
-        return render(request, 'index.html', context)      
+        return render(request, 'index.html', context)   
+
+
+class ProfileView(View):
+    def get(self, request, pk):
+        profile = UserProfile.objects.get(pk=pk)
+        user = profile.user
+        images = Image.objects.filter(creator_profile = user).order_by('-created_on')   
+
+        context = {
+            'user':user,
+            'profile':profile,
+            'images':images,
+        }        
+
+        return render(request, 'profile.html', context)
