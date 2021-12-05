@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.Views import Views
+#from django.Views import Views
 from .models import Image
 
 
 # Create your views here.
-def index(self, request):
+def index(request):
     images = Image.objects.all().order_by('-created_on')
     
     context = {

@@ -5,6 +5,11 @@
 <div class="container">
     <h3>Suggestions for you</h3>
     <h1 class="border p-2"></h1>
+    {% for image in image_list %}
+    
+    <h1>{{ image.image_name }}</h1>
+
+    {% endfor %}
 </div>
 
 {% endblock %}
