@@ -38,7 +38,7 @@ class ProfileView(View):
     def get(self, request, pk):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
-        images = Image.objects.filter(creator_profile = user).order_by('-created_on')   
+        images = Image.objects.filter(author = user).order_by('-created_on')   
 
         context = {
             'user':user,

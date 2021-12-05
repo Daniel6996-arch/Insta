@@ -29,6 +29,6 @@ class Comment(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key = True, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
-    name = models.CharField(max_length=30, blank=True, null=True)
-    bio = HTMLField()
+    full_name = models.CharField(max_length=30)
+    bio = HTMLField(blank=True, null=True)
     profile_pic = models.ImageField(upload_to = 'images/profile_pics', default = 'images/profile_pics/default.png', blank = True)

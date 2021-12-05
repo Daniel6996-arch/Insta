@@ -5,19 +5,23 @@
 
 <div class="container">
     <div>
-        <h5>Add a Post</h5>
+        <a href="{% url 'image-list' %}" class="btn-light">Back to Feed</a>
     </div>
+
     <div>
-        <form method="POST">
-            {% csrf_token %}
+        <div class="card shadow-sm border-bottom px-5 pt-3">
+            <img src="{{ profile.image.url }}" class="rounded-circle" width="100" height="100">
+            {% if profile.full_name %}
+            <h3 class="py-4">{{ profile.full_name }}</h3>
+            {% endif%}
 
-            {% bootstrap_form form %}
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-sm" value="Submit">
-              </div> 
-        </form>
+            {% if profile.bio %}
+            <h3 class="py-4">{{ profile.bio }}</h3>
+            {% endif%}
+        </div>
 
     </div>
+
     <h1 class="border p-2"></h1>
     {% for image in image_list %}
 
