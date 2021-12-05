@@ -4,12 +4,11 @@ from .models import Image
 
 
 # Create your views here.
-class ImageListView(View):
-    def index(self, request):
-        images = Image.objects.all().order_by('-created_on')
-        
-        context = {
-            'image_list':images,
-        }
+def index(self, request):
+    images = Image.objects.all().order_by('-created_on')
+    
+    context = {
+        'image_list':images,
+    }
 
-        return render(request, 'index.html', context) 
+    return render(request, 'index.html', context) 

@@ -4,6 +4,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns=[
-    url('^$',ImageListView.as_view(),name = 'image-list'),
+    url('^$',views.index,name = 'index'),
 ]
 
