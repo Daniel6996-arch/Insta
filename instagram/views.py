@@ -8,9 +8,27 @@ class ImageListView(View):
     def get(self, request):
         images = Image.objects.all().order_by('-created_on')
         form = PostForm()
+
         context = {
             'image_list':images,
             'form':form,
         }
 
         return render(request, 'index.html', context) 
+
+
+    def post(self, request):
+        images = Image.objects.all().order_by('-created_on')
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            new_post = form.save(commit = False)
+            new_post.creator_profile = request.user
+            new_post.save()   
+
+        context = {
+            'image_list':images,
+            'form':form,
+        }
+
+        return render(request, 'index.html', context)      
