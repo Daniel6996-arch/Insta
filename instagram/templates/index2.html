@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <h5>Add a Post</h5>
+    </div>
+    <div>
+        <form method="POST" action="{% url 'post-list' %}">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+              </div> 
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
