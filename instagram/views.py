@@ -26,11 +26,15 @@ class ImageListView(View):
 
     def post(self, request):
         images = Image.objects.all().order_by('-created_on')
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             new_post = form.save(commit = False)
             new_post.author = request.user
+
+            if 'img' in request.FILES:
+                new_post.image = request.FILES['img']
+
             new_post.save()   
 
         context = {

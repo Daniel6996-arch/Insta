@@ -14,7 +14,7 @@ class Image(models.Model):
     image_caption = models.TextField(blank = True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
-    likes = models.IntegerField()
+    likes = models.IntegerField(default=0)
 
 class Comment(models.Model): 
     comment = models.TextField()

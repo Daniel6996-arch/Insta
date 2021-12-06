@@ -2,6 +2,7 @@ from django import forms
 from .models import Image, Comment
 
 class PostForm(forms.ModelForm):
+    image = forms.FileField(label='Upload image') 
 
     class Meta:
         model = Image
