@@ -47,3 +47,17 @@ class ProfileView(View):
         }        
 
         return render(request, 'profile.html', context)
+
+
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = UserProfile
+    fields = ['name', 'bio', 'profile_pic']
+    template_name = 'profile_edit'
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('profile', kwargs={'pk':pk})
+
+    def test_func(self):
+    profile = self.get_object()
+    return self.request.user == profile.user    

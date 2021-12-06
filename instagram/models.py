@@ -4,6 +4,8 @@ from tinymce.models import HTMLField
 from django.contrib.auth.models import User
 from PIL import Image
 import PIL.Image as Image
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 class Image(models.Model):
@@ -32,3 +34,13 @@ class UserProfile(models.Model):
     full_name = models.CharField(max_length=30)
     bio = HTMLField(blank=True, null=True)
     profile_pic = models.ImageField(upload_to = 'images/profile_pics', default = 'images/profile_pics/default.png', blank = True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User) 
+def save_user_Profile(sender, instance, **kwargs):
+    instance.profile.save()        
+        
