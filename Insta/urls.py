@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^social/',include('instagram.urls')),
+    url(r'',include('instagram.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', views.ImageListView.as_view(), {"next_page": '/'}),
     url(r'^tinymce/', include('tinymce.urls')),

@@ -5,7 +5,10 @@
 
 <div class="container">
     <div>
-        <h5>Add a Post</h5>
+        <a href="{% url 'image-detail' object.pk %}" class="btn btn-light">Back To Post</a>
+    </div>
+    <div>
+        <h5>Edit Image Caption</h5>
     </div>
     <div>
         <form method="POST">
@@ -14,17 +17,9 @@
             {% bootstrap_form form %}
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-sm" value="Submit">
-              </div> 
+             </div> 
         </form>
-
-    </div>
-    <h1 class="border p-2"></h1>
-    {% for image in image_list %}
-
-    <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image }}"></a> 
-    <p>Created by {{ image.author }} on {{ image.created_on }}</p>
-
-    {% endfor %}
+    </div>    
 </div>
 
 {% endblock %}

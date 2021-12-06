@@ -12,7 +12,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to = 'images/', default = 'SOME STRING')
     image_name = models.CharField(max_length = 60)
     image_caption = models.TextField(blank = True)
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField()
 

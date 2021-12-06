@@ -35,9 +35,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Gallery</a>
-          </li>
+          
           {% if user.is_authenticated %}
 
           <li class="nav-item">
@@ -45,10 +43,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">Gallery</a>
-          </li>
-          {% else %}
-          <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
           </li>
 
           {% endif %}

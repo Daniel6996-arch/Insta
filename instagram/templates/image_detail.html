@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <a href="{% url 'image-list' %}" class="btn btn-light">Back To Feed</a>
+    </div>
+    <div class="border p-2">
+        {% if request.user == image.author %}
+         <a href="{% url 'image-edit' image.pk %}"></a>
+        {% endif %}
+        <img src="{{ image.image }}"> 
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Name of image: </span>{{ image.image_name }}</p>
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Caption: </span> {{ image.image_caption }}</p>
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by</span> {{ image.author }} <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Likes: </span>{{ image.likes }}</p>
+    
+    </div>
+
+    <div>
+        {% for comment in comments %}
+
+        <p>{{ comment.author }}</p>
+        <p>{{ comment.created_on }}</p>
+        <p>{{ comment.comment }}</p>
+
+        {% endfor %}
+    </div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+            </div> 
+        </form>
+    </div>
+   
+</div>
+
+{% endblock %}
