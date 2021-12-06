@@ -1,7 +1,7 @@
-# Catchy Photos254 
+# Instagrammer
 
 ## Description  
-#### {This is an application of Catchy photos254 which shows different photos taken from different locations and by different people in many categories} {27/11/2021}
+#### {This is an application of Instagrammer which allows a user to post an image and also to comment on other images by other users} {04/12/2021}
 #### Authored By **{Daniel6996-arch}**
 ## Behavior-Driven Development
 ###As a User I should:     
