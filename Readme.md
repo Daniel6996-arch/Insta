@@ -4,23 +4,24 @@
 #### {This is an application of Catchy photos254 which shows different photos taken from different locations and by different people in many categories} {27/11/2021}
 #### Authored By **{Daniel6996-arch}**
 ## Behavior-Driven Development
-###As a User I should:  
-*View different photos that interest me.  
-*Click on a single photo to expand it and also view the details of the photo. The photo details must appear on a modal within the same route as the main page.   
-*Search for different categories of photos. (ie. Travel, Food)   
-*Copy a link to the photo to share with my friends.   
-*View photos based on the location they were taken.  
+###As a User I should:     
+*Sign in to the application to start using.   
+*Upload my pictures to the application.   
+*See my profile with all my pictures.   
+*Follow other users and see their pictures on my timeline.   
+*Like a picture and leave a comment on it.   
 ## link
 https://dantecatchyphotos254.herokuapp.com/
 ## Setup/Installation Requirements
 *This website best works on latest version browsers that support python.   
 *Older browsers my work ineffectively.   
 *This website is dependency free therefore depends on NO other code or application.
-## Technologies Used
-*Python.   
-*Django.  
-*Custom made CSS stylesheet.    
-*Bootstrap stylesheet.    
+## Technologies Used    
+*Python.      
+*Django.     
+*Custom made CSS stylesheet.      
+*Bootstrap stylesheet.   
+*Cloudinary.     
 ## Support and contact details
 contact@danielnyutu@student.moringaschool.com
 ### License 
