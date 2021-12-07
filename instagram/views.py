@@ -8,8 +8,8 @@ from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
 
 # Create your views here.
-def landing(request):
-    return render(request, 'landing.html')
+def index(request):
+    return render(request, 'index.html')
 
 
 class ImageListView(View):
