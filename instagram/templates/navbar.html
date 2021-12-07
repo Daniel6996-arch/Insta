@@ -32,22 +32,19 @@
     </div>
 <!-- search form end -->
     <div class="navbar">
-        <ul class="navbar-nav ms-auto" id="fle">
+        <ul class="navbar-nav ms-auto d-flex flex-row justify-content-around" id="fle">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'image-list' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Add Post</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link active" href="{% url 'profile' user.profile.pk%}">Profile</a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'auth_logout' %}?next=/"> Logout</a>
+            <a class="nav-link active" href="{% url 'auth_logout' %}?next=/"> Logout</a>
           </li>
-
-          
         </ul>
     </div>
     {% endif %}

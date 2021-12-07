@@ -35,6 +35,7 @@ class UserProfile(models.Model):
     full_name = models.CharField(max_length=30)
     bio = HTMLField(blank=True, null=True)
     profile_pic = CloudinaryField('image')
+    followers = models.ManyToManyField(User, blank = True, related_name = 'followers')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
