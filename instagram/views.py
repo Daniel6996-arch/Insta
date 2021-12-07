@@ -181,7 +181,9 @@ class AddLike(LoginRequiredMixin, View):
         if is_like:
             image.likes.remove(request.user)
 
-        next = request.POST.get('next', '/')    
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect{next}
+
 
                 
         
@@ -211,7 +213,9 @@ class Dislike(LoginRequiredMixin, View):
         if is_dislike:
             image.dislikes.remove(request.user)
 
-        next = request.POST.get('next', '/')    
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
 
                         
 
