@@ -102,10 +102,22 @@ class ProfileView(View):
         user = profile.user
         images = Image.objects.filter(author = user).order_by('-created_on')   
 
+        followers = profile.followers.all()
+        for follower in followers:
+            if follower == request.user:
+                is_following = True
+                break
+            else:
+                is_following = False    
+
+        number_of_followers = len(followers)
+
         context = {
             'user':user,
             'profile':profile,
             'images':images,
+            'number_of_followers':number_of_followers,
+            'is_following':is_following,
         }        
 
         return render(request, 'profile.html', context)
@@ -129,5 +141,12 @@ class AddFollower(LoginRequiredMixin, View):
         profile = UserProfile.objects.get(pk=pk)
         profile.followers.add(request.user)
 
-        return redirect('profile', pk = profile.pk)    
+        return redirect('profile', pk = profile.pk)
+
+class RemoveFollower(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        profile = UserProfile.objects.get(pk=pk)
+        profile.followers.remove(request.user)
+
+        return redirect('profile', pk = profile.pk)            
 
