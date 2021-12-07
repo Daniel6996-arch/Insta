@@ -106,7 +106,7 @@ class ProfileView(View):
 
         if len(followers) == 0:
             is_following = False
-             
+
         for follower in followers:
             if follower == request.user:
                 is_following = True
@@ -152,5 +152,37 @@ class RemoveFollower(LoginRequiredMixin, View):
         profile = UserProfile.objects.get(pk=pk)
         profile.followers.remove(request.user)
 
-        return redirect('profile', pk = profile.pk)            
+        return redirect('profile', pk = profile.pk) 
+
+class AddLike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        image = Image.objects.get(pk=pk)
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = true
+                break
+
+            if not is_like:
+                post.likes.add(request.user)
+            if is_like:
+                post.likes.remove(request.user)
+        
+class Dislike(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        image = Image.objects.get(pk=pk)
+
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = true
+                break
+
+            if not is_like:
+                post.likes.add(request.user)
+            if is_like:
+                post.likes.remove(request.user)
+
+        return redirect('profile', pk = profile.pk)         
 
