@@ -22,7 +22,7 @@ class ImageListView(View):
             'form':form,
         }
 
-        return render(request, 'index.html', context) 
+        return render(request, 'image-list.html', context) 
 
 
     def post(self, request):
@@ -43,7 +43,7 @@ class ImageListView(View):
             'form':form,
         }
 
-        return render(request, 'index.html', context)   
+        return render(request, 'image-list.html', context)   
 
 class ImageDetailView(View):
     def get(self, request, pk, *args, **kwargs):
