@@ -182,7 +182,7 @@ class AddLike(LoginRequiredMixin, View):
             image.likes.remove(request.user)
 
         next = request.POST.get('next', '/')
-        return HttpResponseRedirect{next}
+        return HttpResponseRedirect(next)
 
 
                 
