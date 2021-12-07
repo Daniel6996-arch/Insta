@@ -173,7 +173,7 @@ class AddLike(LoginRequiredMixin, View):
 
         for like in image.likes.all():
             if like == request.user:
-                is_like = true
+                is_like = True
                 break
 
         if not is_like:
@@ -195,7 +195,7 @@ class Dislike(LoginRequiredMixin, View):
 
         for like in image.likes.all():
             if like == request.user:
-                is_like = true
+                is_like = True
                 break
 
         if is_like:
