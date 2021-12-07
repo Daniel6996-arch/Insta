@@ -34,7 +34,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key = True, verbose_name = 'user', related_name = 'profile', on_delete = models.CASCADE)
     full_name = models.CharField(max_length=30)
     bio = HTMLField(blank=True, null=True)
-    profile_pic = models.ImageField(upload_to = 'images/profile_pics', default = 'images/profile_pics/default.png', blank = True)
+    profile_pic = CloudinaryField('image')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
