@@ -18,7 +18,7 @@
         </form>
 
     </div>
-    {% for image in image_list %}
+    {% for image in images %}
 
     <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image.url }}"></a> 
     <p><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">@{{ image.author }}</a> on {{ image.created_on }}</p>
