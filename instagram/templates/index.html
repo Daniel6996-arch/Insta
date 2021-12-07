@@ -27,13 +27,13 @@
         <form method="POST" action="{% url 'like' image.pk %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit">Like <span>{{ image.likes.all.count }}</span></button>
+            <button style="background-color: transparent; border: none;" type="submit">Like <span class="btn btn-light">{{ image.likes.all.count }}</span></button>
         </form>
 
         <form method="POST" action="{% url 'dislike' image.pk %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit">Dislike <span>{{ image.dislikes.all.count }}</span></button>
+            <button style="background-color: transparent; border: none;" type="submit">Dislike <span class="btn btn-light">{{ image.dislikes.all.count }}</span></button>
         </form>
     </div>
     {% endfor %}
