@@ -158,6 +158,15 @@ class AddLike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         image = Image.objects.get(pk=pk)
 
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = true
+                break
+
+        is_like = False
+
         for like in post.likes.all():
             if like == request.user:
                 is_like = true
@@ -179,10 +188,10 @@ class Dislike(LoginRequiredMixin, View):
                 is_dislike = true
                 break
 
-            if not is_like:
-                post.likes.add(request.user)
-            if is_like:
-                post.likes.remove(request.user)
+            if not is_dislike:
+                post.dislikes.add(request.user)
+            if is_dislike:
+                post.dislikes.remove(request.user)
 
         return redirect('profile', pk = profile.pk)         
 
