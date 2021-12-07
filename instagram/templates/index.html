@@ -22,7 +22,20 @@
 
     <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image.url }}"></a> 
     <p><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">@{{ image.author }}</a> on {{ image.created_on }}</p>
+ 
+    <div>
+        <form method="POST" action="{% url 'like' image.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request-path }}">
+            <button style="background-color: transparent; border: none;" type="submit">Like</button>
+        </form>
 
+        <form method="POST" action="{% url 'dislike' image.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request-path }}">
+            <button style="background-color: transparent; border: none;" type="submit">Dislike</button>
+        </form>
+    </div>
     {% endfor %}
 </div>
 

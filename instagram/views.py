@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
 from .models import Image, UserProfile, Comment
@@ -175,10 +176,14 @@ class AddLike(LoginRequiredMixin, View):
                 is_like = true
                 break
 
-            if not is_like:
-                image.likes.add(request.user)
-            if is_like:
-                image.likes.remove(request.user)
+        if not is_like:
+            image.likes.add(request.user)
+        if is_like:
+            image.likes.remove(request.user)
+
+        next = request.POST.get('next', '/')    
+
+                
         
 class Dislike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
@@ -201,10 +206,12 @@ class Dislike(LoginRequiredMixin, View):
                 is_dislike = true
                 break
 
-            if not is_dislike:
-                image.dislikes.add(request.user)
-            if is_dislike:
-                image.dislikes.remove(request.user)
+        if not is_dislike:
+            image.dislikes.add(request.user)
+        if is_dislike:
+            image.dislikes.remove(request.user)
 
-        return redirect('profile', pk = profile.pk)         
+        next = request.POST.get('next', '/')    
+
+                        
 
