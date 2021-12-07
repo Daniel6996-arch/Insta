@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.urls import path
 from . import views
-from .views import ImageListView, ImageDetailView, ImageEditView, ImageDeleteView, ProfileView, ProfileEditView, AddFollower
+from .views import ImageListView, ImageDetailView, ImageEditView, ImageDeleteView, ProfileView, ProfileEditView, AddFollower, RemoveFollower
 
 urlpatterns=[
     url('^$', views.landing, name='landing'),
@@ -14,5 +14,6 @@ urlpatterns=[
     path('post/delete/<int:pk>', ImageDeleteView.as_view(), name = 'image-delete'),
     path('^profile/edit/<int:pk>/', ProfileEditView.as_view(), name = 'profile-edit'),
     path('^profile/<int:pk>/followers/add', AddFollower.as_view(), name = 'add-follower'),
+    path('^profile/<int:pk>/followers/remove', RemoveFollower.as_view(), name = 'remove-follower'),
 ]
 

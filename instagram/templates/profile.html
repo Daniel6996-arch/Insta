@@ -29,6 +29,22 @@
             <h3 class="py-4">{{ profile.bio }}</h3>
             {% endif%}
         </div>
+        <div>
+            <p>Followers: {{ number_of_followers }}</p>
+            {% if request.user == user %}
+            {% else %}
+            {% if is_following %}
+            <form method="POST" action="{% url 'remove-follower' profile.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit">Unfollow</button>
+            </form>
+            {% else %}
+            <form method="POST" action="{% url 'add-follower' profile.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-success" type="submit">follow</button>
+            </form>
+            {% endif %}
+        </div>
 
     </div>
 
