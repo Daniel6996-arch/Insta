@@ -181,6 +181,13 @@ class Dislike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         image = Image.objects.get(pk=pk)
 
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = true
+                break
+
         is_dislike = False
 
         for dislike in post.dislikes.all():
