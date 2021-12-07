@@ -160,22 +160,25 @@ class AddLike(LoginRequiredMixin, View):
 
         is_dislike = False
 
-        for dislike in post.dislikes.all():
+        for dislike in image.dislikes.all():
             if dislike == request.user:
                 is_dislike = true
                 break
 
+        if is_dislike:
+            image.dislikes.remove(request.user)        
+
         is_like = False
 
-        for like in post.likes.all():
+        for like in image.likes.all():
             if like == request.user:
                 is_like = true
                 break
 
             if not is_like:
-                post.likes.add(request.user)
+                image.likes.add(request.user)
             if is_like:
-                post.likes.remove(request.user)
+                image.likes.remove(request.user)
         
 class Dislike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
@@ -183,22 +186,25 @@ class Dislike(LoginRequiredMixin, View):
 
         is_like = False
 
-        for like in post.likes.all():
+        for like in image.likes.all():
             if like == request.user:
                 is_like = true
                 break
 
+        if is_like:
+            image.likes.remove(request.user)         
+
         is_dislike = False
 
-        for dislike in post.dislikes.all():
+        for dislike in image.dislikes.all():
             if dislike == request.user:
                 is_dislike = true
                 break
 
             if not is_dislike:
-                post.dislikes.add(request.user)
+                image.dislikes.add(request.user)
             if is_dislike:
-                post.dislikes.remove(request.user)
+                image.dislikes.remove(request.user)
 
         return redirect('profile', pk = profile.pk)         
 
