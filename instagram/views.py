@@ -103,6 +103,10 @@ class ProfileView(View):
         images = Image.objects.filter(author = user).order_by('-created_on')   
 
         followers = profile.followers.all()
+
+        if len(followers) == 0:
+            is_following = False
+             
         for follower in followers:
             if follower == request.user:
                 is_following = True
