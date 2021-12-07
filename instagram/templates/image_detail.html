@@ -14,7 +14,7 @@
         <img src="{{ image.image.url }}"> 
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Name of image: </span>{{ image.image_name }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Caption: </span> {{ image.image_caption }}</p>
-        <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by</span> {{ image.author }} <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by</span><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">{{ image.author }}</a> <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Likes: </span>{{ image.likes }}</p>
     
     </div>
