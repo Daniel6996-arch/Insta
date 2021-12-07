@@ -11,6 +11,10 @@ from django.views.generic.edit import UpdateView, DeleteView
 def index(request):
     return render(request, 'index.html')
 
+def users(request):
+    users = UserProfile.objects.all()
+    return render(request, 'welcome.html', {'users':users})       
+
 
 class ImageListView(View):
     def get(self, request):
