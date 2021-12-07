@@ -20,7 +20,7 @@
     </div>
     {% for image in image_list %}
 
-    <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image }}"></a> 
+    <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image.url }}"></a> 
     <p>Created by {{ image.author }} on {{ image.created_on }}</p>
 
     {% endfor %}

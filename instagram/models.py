@@ -6,10 +6,11 @@ from PIL import Image
 import PIL.Image as Image
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'images/', default = 'SOME STRING')
+    image = CloudinaryField('image')
     image_name = models.CharField(max_length = 60)
     image_caption = models.TextField(blank = True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

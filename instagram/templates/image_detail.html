@@ -11,7 +11,7 @@
         {% if request.user == image.author %}
          <a href="{% url 'image-edit' image.pk %}"></a>
         {% endif %}
-        <img src="{{ image.image }}"> 
+        <img src="{{ image.image.url }}"> 
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Name of image: </span>{{ image.image_name }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Caption: </span> {{ image.image_caption }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by</span> {{ image.author }} <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
@@ -19,7 +19,8 @@
     
     </div>
 
-    <div>
+    <div class="">
+        <h3 class="text-center">Comments</h3>
         {% for comment in comments %}
 
         <p>{{ comment.author }}</p>

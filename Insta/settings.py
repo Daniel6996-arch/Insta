@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tinymce',
     'bootstrap5',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +76,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Insta.wsgi.application'
+
+# adding config
+cloudinary.config( 
+  cloud_name = "dante6996-arch", 
+  api_key = "264718389151771", 
+  api_secret = "apDCTL0vIVZ3-UXadEdcXVXrcQQ" 
+)
 
 
 # Database
