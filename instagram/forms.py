@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Image
-        exclude = ['author', 'created_on', 'likes']
+        exclude = ['author', 'created_on', 'likes', 'dislikes']
 
 
 class CommentForm(forms.ModelForm):
