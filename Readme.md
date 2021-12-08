@@ -11,7 +11,7 @@
 *Follow other users and see their pictures on my timeline.   
 *Like a picture and leave a comment on it.   
 ## link
-https://dantecatchyphotos254.herokuapp.com/
+https://danteinstagrammer.herokuapp.com/
 ## Setup/Installation Requirements
 *This website best works on latest version browsers that support python.   
 *Older browsers my work ineffectively.   
