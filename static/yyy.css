@@ -10,3 +10,6 @@
 .far{
     margin-left: 10vw;
 }
+#post1, #home, #posts, #profile{
+    display: none;
+}

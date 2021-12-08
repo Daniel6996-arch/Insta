@@ -6,36 +6,38 @@
 <div class="container">
     <h1 class="border p-2">All Posts</h1>
     <div>
-        <h5>Add a Post</h5>
+        <h5><a style="text-decoration: none;" class="btn btn-light" id="post" href="#post1">Add a Post</a></h5>
     </div>
-    <div>
+    <div id="post1">
         <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
             {% csrf_token %}
 
             {% bootstrap_form form %}
             <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+                <input id="post2" type="submit" class="btn btn-primary btn-sm" value="Submit">
               </div> 
         </form>
 
     </div>
-    {% for image in images %}
+    {% for image in image_list %}
 
-    <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image.url }}"></a>   
-    <p><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">@{{ image.author }}</a> on {{ image.created_on }}</p>
+    <div class="border p-2">
+        <a href="{% url 'image-detail' image.pk %}"><img src="{{ image.image.url }}"></a>   
+        <p><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">@{{ image.author }}</a> on {{ image.created_on }}</p>
 
-    <div class="d-flex flex-row">
-        <form method="POST" action="{% url 'like' image.pk %}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-up"></i><span class="btn btn-light text-primary">{{ image.likes.all.count }}</span></button>
-        </form>
+        <div class="d-flex flex-row">
+            <form method="POST" action="{% url 'like' image.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-up"></i><span class="btn btn-light text-primary">{{ image.likes.all.count }}</span></button>
+            </form>
 
-        <form method="POST" action="{% url 'dislike' image.pk %}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-down"></i><span class="btn btn-light text-primary">{{ image.dislikes.all.count }}</span></button>
-        </form>
+            <form method="POST" action="{% url 'dislike' image.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-down"></i><span class="btn btn-light text-primary">{{ image.dislikes.all.count }}</span></button>
+            </form>
+        </div>
     </div>
     
     {% endfor %}
