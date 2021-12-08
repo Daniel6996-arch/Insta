@@ -1,0 +1,12 @@
+.margin-left{
+    margin-left: 3vw;
+}
+.justify{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.far{
+    margin-left: 10vw;
+}

@@ -1,1 +1,28 @@
-see search results
+{%extends 'base.html'%} 
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    {% if users%}
+      <h2>Found {{ users|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 users for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if users %}
+    {% for user in users %}
+      <div class="col-sm-6 col-md-3 border p-2" style="width: 30vw;">
+        <p class="fs-5 text-center">User <a class="text-primary" style="text-decoration: none;" href="{% url 'profile' user.user.profile.pk %}">{{ user.user }}</a></p>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+
+{% endblock %}

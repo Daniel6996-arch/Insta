@@ -6,14 +6,29 @@ from django.views import View
 from .models import Image, UserProfile, Comment
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
+@login_required(login_url='/accounts/login/')
 def users(request):
     users = UserProfile.objects.all()
-    return render(request, 'welcome.html', {'users':users})       
+    
+    return render(request, 'welcome.html', {'users':users})      
+
+def search(request):
+
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_users = UserProfile.search_user(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html', {"message":message,"users":searched_users})
+
+    else:
+        return render(request, 'search.html', {"message":message})     
 
 
 class ImageListView(View):

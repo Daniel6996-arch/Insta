@@ -14,7 +14,7 @@
         <img src="{{ image.image.url }}"> 
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Name of image: </span>{{ image.image_name }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Caption: </span> {{ image.image_caption }}</p>
-        <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by</span><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">{{ image.author }}</a> <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
+        <p class="fs-5"><span class="fst-italic text-warning fs-4">Created by </span><a class="text-primary" style="text-decoration: none;" href="{% url 'profile' image.author.profile.pk %}">@{{ image.author }}</a> <span class="fst-italic text-warning">on</span> {{ image.created_on }}</p>
         <p class="fs-5"><span class="fst-italic text-warning fs-4">Likes: </span>{{ image.likes }}</p>
     
     </div>
@@ -22,13 +22,13 @@
         <form method="POST" action="{% url 'like' image.pk %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit">Like <span class="btn btn-light">{{ image.likes.all.count }}</span></button>
+            <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-up"></i><span class="btn btn-light text-primary">{{ image.likes.all.count }}</span></button>
         </form>
 
         <form method="POST" action="{% url 'dislike' image.pk %}">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button style="background-color: transparent; border: none;" type="submit">Dislike <span class="btn btn-light">{{ image.dislikes.all.count }}</span></button>
+            <button style="background-color: transparent; border: none;" type="submit"><i class="fas fa-thumbs-down"></i><span class="btn btn-light text-primary">{{ image.dislikes.all.count }}</span></button>
         </form>
     </div>
 

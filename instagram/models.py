@@ -38,6 +38,11 @@ class UserProfile(models.Model):
     profile_pic = CloudinaryField('image')
     followers = models.ManyToManyField(User, blank = True, related_name = 'followers')
 
+    @classmethod
+    def search_user(cls,search_term):
+        users = cls.objects.filter(user__username = search_term)
+        return users
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -47,3 +52,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_Profile(sender, instance, **kwargs):
     instance.profile.save()        
         
+
